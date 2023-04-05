@@ -13,7 +13,7 @@ import javafx.geometry.Point2D;
 public class Pelota {
 
     private Point2D posicion;
-    private float angulo = 45;
+    private float angulo = 80;
     private float velocidad = 1f;
     private int radio = 8;
 
@@ -28,7 +28,12 @@ public class Pelota {
         
         this.radio = radio;
      }
-
+    public void changeDirectionHorizontal() {
+        this.setAngulo(180.0f - this.getAngulo());
+    }
+    public void changeDirectionVertical() {
+        this.setAngulo(360.0f - this.getAngulo());
+    }
     public void mover() {
         float x = (float) ((float) getVelocidad() * Math.cos(Math.toRadians(getAngulo())));
         float y = (float) ((float) getVelocidad() * Math.sin(Math.toRadians(getAngulo())));
@@ -36,7 +41,7 @@ public class Pelota {
         
        
     }
-
+    
     
 
     /**

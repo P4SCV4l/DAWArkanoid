@@ -15,11 +15,16 @@ enum EstadoJuego {
     PENDIETEINICIAR,
     INICIADO
 }
-
+enum Limite{
+    NONE,
+    TOPEARRIBA,
+    TOPEABAJO,
+    TOPEDERECHA,
+    TOPEIZQUIERDA
+}
 public class Juego {
 
     private Campo campo;
-   
     public static int ANCHO = 448;
     public static int ALTO = 480;
    
@@ -41,7 +46,7 @@ public class Juego {
      */
     public EstadoCambiosJuego ciclo(boolean pulsados[]) {
         EstadoCambiosJuego vuelta=EstadoCambiosJuego.NADA;
-       
+        
         if (pulsados[0]) {
             this.moverBarraIzquierda();
         }
@@ -49,19 +54,36 @@ public class Juego {
             this.moverBarraDerecha();
         }
         //si devuelve true es que toca fondo
-        if(this.moverPelota())
-            vuelta=EstadoCambiosJuego.TOCABORDE;
-       
+        switch(this.moverPelota()){
+            case TOPEABAJO:
+                //Por arreglar.
+                this.campo.getPelota().changeDirectionVertical();
+                System.out.println("Perdiste.");
+                break;
+            case TOPEARRIBA:
+                this.campo.getPelota().changeDirectionVertical();
+                break;
+            case TOPEDERECHA:
+            case TOPEIZQUIERDA:
+                this.campo.getPelota().changeDirectionHorizontal();
+                break;
+        }
+        
         return vuelta;
     }
     
-     public boolean moverPelota() {
-        boolean tocafondo=false;
-       
+     public Limite moverPelota() {
+        Limite tocaborde=Limite.NONE;
+        
             this.campo.getPelota().mover();
+            Point2D pos_pelota=this.campo.getPelota().getPosicion();
+            if (pos_pelota.getY() > Juego.ALTO) tocaborde=Limite.TOPEABAJO;
+            if (pos_pelota.getY() < 0) tocaborde=Limite.TOPEARRIBA;
+            if (pos_pelota.getX() < 0) tocaborde=Limite.TOPEIZQUIERDA;
+            if (pos_pelota.getX() > Juego.ANCHO) tocaborde=Limite.TOPEDERECHA;
             // pelota.mover();
         
-         return tocafondo;
+         return tocaborde;
     }
     
     public void moverBarraIzquierda() {
