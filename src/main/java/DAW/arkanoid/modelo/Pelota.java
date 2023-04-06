@@ -16,7 +16,12 @@ public class Pelota {
     private float angulo = 80;
     private float velocidad = 1f;
     private int radio = 8;
-
+    private enum Tipo_estado {
+        MOVIMIENTO,
+        PARADA
+    }
+    private Tipo_estado estado = Tipo_estado.MOVIMIENTO;
+    
     public Pelota() {
         this.posicion= new Point2D(0,0);
         this.radio=8;
@@ -42,6 +47,11 @@ public class Pelota {
        
     }
     
+//    public void cambiar_estado(Pelota pelota) {
+//        if (pelota){
+//            
+//        }
+//    }
     
 
     /**

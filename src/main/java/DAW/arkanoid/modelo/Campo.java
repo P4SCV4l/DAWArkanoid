@@ -30,7 +30,7 @@ public class Campo {
         Campo.height = altopixels;
         
         this.barra = new Barra(new Point2D(anchopixels / 2 - 33, altopixels - 29), 30, 14);
-        this.pelota = new Pelota(new Point2D(100,0),10);//this.barra.getPosicion().getX() + this.barra.getAncho() / 2 - 5, this.barra.getPosicion().getY() - 5), 10);//altopixels - 23), 10);
+        this.pelota = new Pelota(new Point2D(100,50),10);//this.barra.getPosicion().getX() + this.barra.getAncho() / 2 - 5, this.barra.getPosicion().getY() - 5), 10);//altopixels - 23), 10);
         
         this.pelota.setAngulo(70);
 

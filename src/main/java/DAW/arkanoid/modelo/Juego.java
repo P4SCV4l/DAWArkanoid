@@ -78,14 +78,26 @@ public class Juego {
             this.campo.getPelota().mover();
             Point2D pos_pelota=this.campo.getPelota().getPosicion();
             if (pos_pelota.getY() > Juego.ALTO) tocaborde=Limite.TOPEABAJO;
-            if (pos_pelota.getY() < 0) tocaborde=Limite.TOPEARRIBA;
-            if (pos_pelota.getX() < 0) tocaborde=Limite.TOPEIZQUIERDA;
-            if (pos_pelota.getX() > Juego.ANCHO) tocaborde=Limite.TOPEDERECHA;
+            if (pos_pelota.getY() < 0 + 18) tocaborde=Limite.TOPEARRIBA;
+            if (pos_pelota.getX() < 0 + 17) tocaborde=Limite.TOPEIZQUIERDA;
+            if (pos_pelota.getX() > Juego.ANCHO - 25) tocaborde=Limite.TOPEDERECHA;
+            if (pos_pelota.getX() >= this.campo.getBarra().getPosicion().getX() && pos_pelota.getX() <= this.campo.getBarra().getPosicion().getX() + this.campo.getBarra().getAncho() &&
+                    pos_pelota.getY() >= this.campo.getBarra().getPosicion().getY() - 6 && pos_pelota.getY() <= this.campo.getBarra().getPosicion().getY() + this.campo.getBarra().getAlto()) 
+                tocaborde=Limite.TOPEABAJO;
             // pelota.mover();
         
          return tocaborde;
     }
     
+//    public void choqueBarraLimite() {
+//        if(this.campo.getBarra().getPosicion().getX()>=0){
+//            this.campo.getBarra().setPosicion(new Point2D(0.0d,this.campo.getBarra().getPosicion().getY()));
+//        }
+//        if(this.campo.getBarra().getPosicion().getX()<=Juego.ANCHO - 25){
+//            this.campo.getBarra().setPosicion(new Point2D(Juego.ANCHO - 25,this.campo.getBarra().getPosicion().getY()));
+//        }
+//    }
+     
     public void moverBarraIzquierda() {
        
         
@@ -112,6 +124,10 @@ public class Juego {
      */
     public void setCampo(Campo campo) {
         this.campo = campo;
+    }
+
+    private Point2D Point2D(double d, double y) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
 
