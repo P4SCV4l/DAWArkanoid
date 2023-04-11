@@ -99,16 +99,10 @@ public class Juego {
 //    }
      
     public void moverBarraIzquierda() {
-       
-        
-            this.campo.getBarra().moverIzquierda();
-           
+            this.campo.getBarra().moveHorizontal(-2,0, 448);     
     }
     public void moverBarraDerecha() {
-        
-            this.campo.getBarra().moverDerecha();
-         
-        
+            this.campo.getBarra().moveHorizontal(2,0,448);
     }
 
    

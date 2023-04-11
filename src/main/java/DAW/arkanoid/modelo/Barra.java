@@ -34,7 +34,11 @@ public class Barra {
         this.posicion=this.posicion.add(-this.incremento,0);
       
     }
-
+    public void moveHorizontal(int incx, int minx, int maxx) {
+        if (this.getPosicion().getX() + incx >= minx && this.getPosicion().getX() + this.getWidth() + incx <= maxx) {
+            this.posicion=this.posicion.add(incx,0);
+        }
+    }
     /**
      * @return the posicion
      */
@@ -74,5 +78,9 @@ public class Barra {
     public void setAlto(int alto) {
         this.alto = alto;
     }    
+
+    private double getWidth() {
+        return ancho;
+    }
 }
 
