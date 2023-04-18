@@ -20,7 +20,8 @@ enum Limite{
     TOPEARRIBA,
     TOPEABAJO,
     TOPEDERECHA,
-    TOPEIZQUIERDA
+    TOPEIZQUIERDA,
+    TOPEBARRA
 }
 public class Juego {
 
@@ -67,6 +68,9 @@ public class Juego {
             case TOPEIZQUIERDA:
                 this.campo.getPelota().changeDirectionHorizontal();
                 break;
+            case TOPEBARRA:
+                this.campo.getPelota().changeDirectionVertical();
+                break;
         }
         
         return vuelta;
@@ -83,7 +87,7 @@ public class Juego {
             if (pos_pelota.getX() > Juego.ANCHO - 25) tocaborde=Limite.TOPEDERECHA;
             if (pos_pelota.getX() >= this.campo.getBarra().getPosicion().getX() && pos_pelota.getX() <= this.campo.getBarra().getPosicion().getX() + this.campo.getBarra().getAncho() &&
                     pos_pelota.getY() >= this.campo.getBarra().getPosicion().getY() - 6 && pos_pelota.getY() <= this.campo.getBarra().getPosicion().getY() + this.campo.getBarra().getAlto()) 
-                tocaborde=Limite.TOPEABAJO;
+                tocaborde=Limite.TOPEBARRA;
             // pelota.mover();
         
          return tocaborde;
@@ -99,10 +103,10 @@ public class Juego {
 //    }
      
     public void moverBarraIzquierda() {
-            this.campo.getBarra().moveHorizontal(-2,0, 448);     
+            this.campo.getBarra().moveHorizontal(-2,17, (Juego.ANCHO - 18));     
     }
     public void moverBarraDerecha() {
-            this.campo.getBarra().moveHorizontal(2,0,448);
+            this.campo.getBarra().moveHorizontal(2,17, (Juego.ANCHO - 18));
     }
 
    

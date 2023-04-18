@@ -64,7 +64,7 @@ public class JuegoUI {
         { //amarillo
             {48, 8}
         },
-        { //ris
+        { //gris
             {0, 16}
         },
         { //dorado
@@ -88,7 +88,9 @@ public class JuegoUI {
         this.imagen_fondo = new Image(classLoader.getResource(this.pathfondos).toString());
 
         //System.out.println(new java.io.File(".").getAbsolutePath());
+        //Muestra los ladrillos por pantalla.
         this.imagen_bloques = new Image(classLoader.getResource(this.pathbloques).toString());
+        //Muestra la pelota y la barra movible por pantalla.
         this.imagen_barrasypelota = new Image(classLoader.getResource(this.pathbarras).toString());
         
        

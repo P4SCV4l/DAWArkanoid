@@ -15,8 +15,7 @@ public class Barra {
     private Point2D posicion;
     private int ancho;
     private int alto;
-   
-    private int incremento=2;
+
     public Barra(){
         this.posicion= new Point2D(0,0);
 
@@ -26,14 +25,6 @@ public class Barra {
         this.ancho=ancho;
         this.alto=alto; 
     }  
-    public void moverDerecha(){
-        this.posicion=this.posicion.add(this.incremento,0);
-        
-    }
-    public void moverIzquierda(){
-        this.posicion=this.posicion.add(-this.incremento,0);
-      
-    }
     public void moveHorizontal(int incx, int minx, int maxx) {
         if (this.getPosicion().getX() + incx >= minx && this.getPosicion().getX() + this.getWidth() + incx <= maxx) {
             this.posicion=this.posicion.add(incx,0);
